@@ -1,0 +1,13 @@
+name: Test deployment
+'on':
+  push: null
+  branches:
+    - main
+jobs:
+  build: null
+  name: Building the app
+  runs-on: ubuntu-latest
+  steps:
+    - name: checkout the code
+      uses: actions/checkout@v4
+      run: echo "Hello"
