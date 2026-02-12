@@ -1,4 +1,4 @@
-name: Jobs and Outputs
+name: Jobs and Outputs #this is just name
 on: push
 
 jobs:
