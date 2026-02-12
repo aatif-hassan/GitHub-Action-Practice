@@ -1,4 +1,5 @@
 name: Jobs and Outputs
+on: push
 
 jobs:
   # JOB 1: The Producer
