@@ -1,0 +1,23 @@
+name: Jobs and Outputs
+
+jobs:
+  # JOB 1: The Producer
+  build_info:
+    runs-on: ubuntu-latest
+    outputs:
+      # Step 2: Mapping the step's value to a Job Output
+      app_version: ${{ steps.get_version.outputs.VERSION }}
+
+    steps:
+      - id: get_version
+        # Step 1: Saving the value into the "Mail Slot"
+        run: echo "VERSION=v1.2.${{ github.run_number }}" >> $GITHUB_OUTPUT
+
+  # JOB 2: The Consumer
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build_info # CRITICAL: This connects the two jobs
+    steps:
+      - name: Use the version
+        # Step 3: Accessing the note from the previous room
+        run: echo "Deploying version ${{ needs.build_info.outputs.app_version }}"
